@@ -1,0 +1,98 @@
+%!TEX encoding = UTF-8
+%% Präambel
+\documentclass[a4paper,12pt]{article}
+
+% Pakete
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage[ngerman]{translator}
+\usepackage[T1]{fontenc}
+\usepackage{fontspec}
+\usepackage{geometry}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage[font={small,it}]{caption}
+\usepackage{color}
+\usepackage{hyperref}
+\usepackage[toc, nopostdot]{glossaries}
+\usepackage{newclude}
+\usepackage{tikz}
+\usepackage{lscape}
+\usepackage{makeidx}
+\usepackage{ragged2e}
+\usepackage{verbatim}
+\usepackage{listings}
+\usepackage{eurosym}
+\usepackage{dirtree}
+\usepackage{pgfgantt}
+
+% Variablen
+\newcommand{\autorname}{Peter Beispiel}
+\newcommand{\dokumententitel}{Hier steht der beispielhafte Dokumententitel}
+\newcommand{\ausbildungsberuf}{Fachinformatiker FR Beispiel}
+\newcommand{\projektzeitraum}{01.01.0000 -- 02.02.0000}
+\newcommand{\ptidentnummer}{123456}
+\newcommand{\ptadresse}{Beispielstraße 10, 12345 Beispiel}
+\newcommand{\pttelefon}{0000 12 34567}
+\newcommand{\ptemail}{peter.beispiel@esh.essen.de}
+\newcommand{\pbname}{Klaus Knüppel}
+\newcommand{\pbadresse}{Beispielstraße 20, 54321 Beispiel}
+\newcommand{\pbtelefon}{0000 98 7654}
+\newcommand{\pbemail}{klaus.knueppel@esh.essen.de}
+
+% Schriftart
+\setmainfont[
+    ItalicFont = Source Sans Pro Light Italic,
+    BoldFont = Source Sans Pro Semibold,
+    BoldItalicFont = Source Sans Pro Semibold Italic
+]{Source Sans Pro Light}
+\setmonofont[
+    ItalicFont = Source Code Pro Light Italic,
+    BoldFont = Source Code Pro Semibold,
+    BoldItalicFont = Source Code Pro Semibold Italic
+]{Source Code Pro Light}
+
+% Farben
+% \definecolor{weiß}{HTML}{FFFFFF}
+
+% Formatierung
+\sloppy
+\geometry{a4paper, top=28mm, bottom=20mm, left=22mm, right=22mm}
+\hypersetup{colorlinks, citecolor=black, filecolor=black, linkcolor=black, urlcolor=black}
+\fancyhf{}
+\fancyhead[L]{\begin{picture}(0,0) \put(4,-2){\includegraphics[width=40mm]{bilder/esh-logo-flach.png}} \end{picture}}
+\fancyhead[R]{\nouppercase{\leftmark}}
+\fancyfoot[L]{\autorname}
+\fancyfoot[C]{Projektdokumentation}
+\fancyfoot[R]{\thepage}
+
+% Sonstiges
+\setlength\parindent{0pt}
+\makeindex
+
+% Glossar
+\include{appendix/Glossar}
+\makeglossaries{}
+
+% Daten
+\author{\autorname}
+\title{\dokumententitel}
+
+
+%% Inhalt
+\begin{document}
+    \pagenumbering{arabic}
+    \include{dokument/Titelseite}
+    \include{dokument/Inhaltsverzeichnis}
+    \pagestyle{fancy}
+    \setcounter{page}{1}
+    % Weitere includes
+
+    \appendix
+    \pagenumbering{Roman}
+    \fancyhead{}
+    \fancyfoot[L]{}
+    \fancyfoot[C]{}
+    \setcounter{page}{1}
+    \printglossary[style=altlist, title=Glossar, toctitle=Glossar, numberedsection, nonumberlist]
+\end{document}
